@@ -1,7 +1,7 @@
 diff --git a/fs/susfs.c b/fs/susfs.c
 index dfd48ab..cc79738 100644
---- a/kernel_patches/fs/susfs.c
-+++ b/kernel_patches/fs/susfs.c
+--- a/fs/susfs.c
++++ b/fs/susfs.c
 @@ -587,10 +587,46 @@ void susfs_sus_ino_for_show_map_vma(unsigned long ino, dev_t *out_dev, unsigned
  #ifdef CONFIG_KSU_SUSFS_SPOOF_UNAME
  static DEFINE_SPINLOCK(susfs_spin_lock_set_uname);
