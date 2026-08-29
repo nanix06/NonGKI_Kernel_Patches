@@ -1,0 +1,16 @@
+--- a/fs/stat.c
++++ b/fs/stat.c
+@@ -1,5 +1,17 @@
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
++bool susfs_is_inode_sus_path(struct inode *inode)
++{
++	if (!inode)
++		return false;
++	if (test_bit(AS_FLAGS_SUS_PATH, &inode->i_state)) {
++		if (is_i_uid_not_allowed(current_uid().val)) {
++			return true;
++		}
++	}
++	return false;
++}
++#endif
